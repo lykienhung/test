@@ -1,0 +1,305 @@
+@import url("../style.css");
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #000000;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0;
+}
+
+
+/* Main container */
+.calendar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Page header */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+/* Events list container */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Event block */
+
+.event-block {
+    position: relative;
+    background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0));
+    background-size: cover;
+    width: 100%;
+    padding: 2rem;
+    background-position: center;
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+    overflow: hidden;
+    background-blend-mode: overlay;
+    border-left: 4px solid #FF670D;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgb(77, 74, 74);
+}
+
+/* Background for each block */
+.block-1 {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0)), url('#') ;
+}
+
+.block-2 {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0)), url('images/event2.jpg');
+}
+
+.block-3 {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0)), url('images/event3.jpg');
+}
+
+.block-4 {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0)), url('images/event4.jpg');
+}
+
+.block-5 {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0)), url('images/event5.jpg');
+}
+
+.block-6 {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0)), url('images/event6.jpg');
+}
+
+.event-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 103, 13, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.event-block:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-left-width: 6px;
+}
+
+.event-block:hover::before {
+    opacity: 1;
+}
+
+
+/* Event content layout */
+.event-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.event-info {
+    flex: 1;
+}
+
+.event-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #FF670D;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.event-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.event-description {
+    font-size: 1rem;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Event meta info */
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 120px;
+    text-align: right;
+}
+
+.event-status {
+    background: #FF670D;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.event-attendees {
+    font-size: 0.85rem;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Click animation */
+.event-block:active {
+    transform: translateY(-2px) scale(1.005);
+}
+
+/* Loading animation */
+.event-block {
+    animation: slideInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.event-block:nth-child(1) { animation-delay: 0.1s; }
+.event-block:nth-child(2) { animation-delay: 0.2s; }
+.event-block:nth-child(3) { animation-delay: 0.3s; }
+.event-block:nth-child(4) { animation-delay: 0.4s; }
+.event-block:nth-child(5) { animation-delay: 0.5s; }
+.event-block:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0;
+    }
+
+    .calendar-container {
+        padding: 0 0.75rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .event-block {
+        padding: 1.5rem;
+    }
+
+    .event-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .event-meta {
+        align-items: flex-start;
+        text-align: left;
+        min-width: auto;
+        width: 100%;
+    }
+
+    .event-title {
+        font-size: 1.3rem;
+    }
+
+    .event-description {
+        font-size: 0.95rem;
+    }
+
+    .events-list {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-container {
+        padding: 0 0.5rem;
+    }
+
+    .event-block {
+        padding: 1.25rem;
+    }
+
+    .page-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Accessibility improvements */
+.event-block:focus {
+    outline: 3px solid #FF670D;
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling enhancement */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    .event-block {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .event-block:hover {
+        transform: none;
+    }
+}
+
+/* Additional visual enhancements */
+.event-block:hover .event-title {
+    color: #FF670D;
+    transition: color 0.3s ease;
+}
+
+.event-block:hover .event-status {
+    background: #000000;
+    transition: background-color 0.3s ease;
+}
