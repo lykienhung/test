@@ -1,0 +1,21 @@
+{
+  "functions": {
+    "index.php": {
+      "runtime": "vercel-php@0.6.0",
+      "includeFiles": [
+        "includes/**", 
+        "api/**",
+        "calendar/**",
+        "images/**",
+        "merchandise/**",
+        "post/**"
+      ]        
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.php"
+    }
+  ]
+}
