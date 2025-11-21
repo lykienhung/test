@@ -1,0 +1,605 @@
+/* Fixed CSS Animation Code */
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background Gradients */
+.gradient-bg {
+    background: linear-gradient(135deg, #000000 0%, #1F1F1F 50%, #000000 100%);
+}
+
+.hero-gradient {
+    background: linear-gradient(135deg, #000000 0%, rgba(255, 103, 13, 0.6) 100%);
+    background-size: 400% 400%;
+}
+
+
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 165, 0, 0.7); }
+    50% { text-shadow: 0 0 20px rgba(255, 165, 0, 1); }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+
+/* Fade Animations */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out both;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.animate-fade-in-scale {
+    animation: fadeInScale 0.8s ease-out both;
+}
+
+/* Slide Animations */
+.animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out both;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out both;
+}
+
+.animate-slide-up {
+    animation: fadeInUp 1s ease-out both;
+}
+
+/* ============================================
+   ANIMATION DELAYS
+   ============================================ */
+
+.animate-delay-100 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+    animation-delay: 0.3s;
+}
+
+.animate-delay-400 {
+    animation-delay: 0.4s;
+}
+
+.animate-delay-500 {
+    animation-delay: 0.5s;
+}
+
+.animate-delay-600 {
+    animation-delay: 0.6s;
+}
+
+.animate-delay-700 {
+    animation-delay: 0.7s;
+}
+
+.animate-delay-800 {
+    animation-delay: 0.8s;
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+/* Button Styles */
+.btn-primary {
+    background: linear-gradient(135deg, #FF670D 0%, #E55D0C 100%);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 103, 13, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 103, 13, 0.4);
+}
+
+.btn-secondary {
+    border: 2px solid #FF670D;
+    color: #FF670D;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #FF670D;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.4s ease;
+    border: 1px solid #1F1F1F;
+}
+
+.card-hover:hover {
+    transform: scale(1.1) translateY(-10px);
+    border-color: #FF670D;
+    box-shadow: 0 20px 40px rgba(255, 103, 13, 0.2);
+}
+
+/* Text Effects */
+.text-glow {
+    text-shadow: 0 0 20px rgba(255, 103, 13, 0.5);
+    animation: glowPulse 2s infinite;
+}
+
+.stats-counter {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FF670D 0%, #EFEFEF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Section Titles */
+.section-title {
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, #FF670D 0%, #E55D0C 100%);
+    border-radius: 2px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    background: linear-gradient(135deg, #1F1F1F 0%, #333333 100%);
+}
+
+/* Language Toggle Styles */
+.language-toggle {
+    position: relative;
+}
+
+.language-toggle:focus {
+    outline: 2px solid #FF670D;
+    outline-offset: 2px;
+}
+
+.language-toggle:hover {
+    transform: translateY(-1px);
+}
+
+/* Flag Icon Styles */
+.language-toggle i {
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.language-toggle:hover i {
+    transform: scale(1.1);
+}
+
+/* Mobile flag styles */
+#mobileLanguageFlag {
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .stats-counter {
+        font-size: 2rem;
+    }
+    
+    .hero-gradient h1 {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-gradient h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+/* Focus States for Accessibility */
+input:focus, button:focus {
+    outline: 2px solid #FF670D;
+    outline-offset: 2px;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1F1F1F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF670D;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #E55D0C;
+}
+
+/* Accessibility improvements - Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-fade-in-scale,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-slide-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-gradient { animation: none; }
+  .text-glow { animation: none; }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .btn-primary {
+        border: 2px solid #FFFFFF;
+    }
+    
+    .card-hover {
+        border: 2px solid #FF670D;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Error states */
+.error {
+    border-color: #FF4444 !important;
+    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+}
+
+/* Success states */
+.success {
+    border-color: #44FF44 !important;
+    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+}
+
+/* ======================================================================
+   PAGE RELOAD / REVEAL ANIMATION
+   ====================================================================== */
+
+/* Full-screen overlay that plays on every load or bfcache restore */
+.page-reveal {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(1200px 800px at 50% 50%, rgba(255,103,13,0.18), rgba(0,0,0,0.0) 70%),
+              linear-gradient(135deg, rgba(255,103,13,0.25), rgba(0,0,0,0) 60%);
+  opacity: 0;
+  z-index: 9999;
+}
+
+/* Keyframes for a quick “flash + fade” reveal */
+@keyframes pageRevealFade {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* When active, run the reveal once */
+.page-reveal.active {
+  animation: pageRevealFade 700ms ease-out forwards;
+}
+
+/* Optional: subtle body fade each time (kept very fast) */
+@keyframes bodyQuickIn {
+  from { opacity: 0.001; }
+  to   { opacity: 1; }
+}
+.body-reveal {
+  animation: bodyQuickIn 240ms ease-out both;
+}
+
+.bg-vgu-surface { background-color: var(--vgu-surface); }
+.bg-vgu-black { background-color: var(--vgu-black); }
+.text-vgu-text { color: var(--vgu-text); }
+.text-vgu-muted { color: var(--vgu-muted); }
+.text-vgu-black { color: var(--vgu-black); }
+
+/* Video Modal Styles */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.video-modal.show {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.video-container {
+    position: relative;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: slideIn 0.3s ease-out;
+}
+
+.close-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+}
+
+.close-button:hover {
+    background: #ff2222;
+    transform: scale(1.1);
+}
+
+.demo-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-width: 320px;
+    min-height: 240px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive video sizing */
+@media (min-width: 768px) {
+    .demo-video {
+        width: 800px;
+        height: 450px;
+    }
+}
+
+@media (max-width: 767px) {
+    .demo-video {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+    
+    .video-container {
+        margin: 20px;
+    }
+}
+
+/* Button styles */
+.btn-primary, .btn-secondary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 165, 0, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Featured Events Title */
+
+.featured-events-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, #FF670D 0%, #E55D0C 100%);
+    border-radius: 2px;
+    transition: width 0.3s ease-in-out;
+}
+
+.featured-events-title:hover::after {
+    width: 400px;
+}
+
+/* ====== Community Testimonials (Marquee version) ====== */
+
+/* Dùng chung gap để JS đọc được */
+.testimonial-wrapper {
+  --gap: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.testimonial-track {
+  display: flex;
+  gap: var(--gap);
+  will-change: transform;
+  /* TẮT animation CSS nếu trước đó có bật */
+  animation: none !important;
+}
+
+/* Base card */
+.testimonial-card {
+  background: #1f1f1f;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  flex: 0 0 100%; /* Mobile: 1 card */
+}
+
+/* Tablet: 2 cards */
+@media (min-width: 640px) {
+  .testimonial-card {
+    flex: 0 0 calc(50% - var(--gap));
+  }
+}
+
+/* Desktop: 3 cards */
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc(33.333% - var(--gap));
+  }
+}
+
+/* Hover: dừng (JS sẽ đọc trạng thái này) */
+.testimonial-wrapper:hover .testimonial-track {
+  /* Không cần set CSS gì thêm, JS sẽ pause khi hover wrapper */
+}
