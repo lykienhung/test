@@ -2,7 +2,6 @@
     // Đặt dòng này ở ĐẦU TIÊN của file, trước bất kỳ thẻ HTML nào
     session_start(); 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -162,29 +161,27 @@
               Survival Book
 
             <div class="flex items-center space-x-4">
-                <?php
-                // Kiểm tra xem biến session 'user_username' có tồn tại không
-                // Nếu có, nghĩa là người dùng đã đăng nhập
-                if (isset($_SESSION["user_username"])) {
-                ?>
-                    <!-- Giao diện KHI ĐÃ ĐĂNG NHẬP -->
+                <?php if (isset($_COOKIE['user_username'])): ?>
+                    
                     <span class="text-vgu-text">
-                        Hi, <?php echo htmlspecialchars($_SESSION["user_username"]); ?>!
+                        Hi, <?php echo htmlspecialchars($_COOKIE['user_username']); ?>!
                     </span>
-                    <a href="includes/logouthandler.php" class="bg-red-600 hover:bg-red-700 text-vgu-text font-bold py-2 px-4 rounded-lg transition-colors">
+                    
+                    <a href="includes/logouthandler.php" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
                         Logout
                     </a>
-                <?php
-                } else {
-                ?>
-                    <!-- Giao diện KHI CHƯA ĐĂNG NHẬP (ĐÃ SỬA LỖI) -->  
-                    <a href="login.php" class="bg-vgu-orange hover:vgu-orange-dark text-vgu-text font-bold py-2 px-4 rounded-lg transition-colors">
-                        Login <!-- Chữ đã được đưa vào trong -->
+
+                <?php else: ?> 
+                <a href="login.php" class="bg-vgu-orange hover:vgu-orange-dark text-vgu-text font-bold py-2 px-4 rounded-lg transition-colors">
+                        Login
                     </a>
-                <?php
-                }
-                ?>
-            </div>  
+                    
+                    <a href="register.html" class="vgu-orange hover:vgu-orange-dark text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                        Register
+                    </a>
+
+                <?php endif; ?>
+            </div>
 
 
             </a>
