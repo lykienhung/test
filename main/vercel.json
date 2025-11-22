@@ -5,7 +5,7 @@
       "use": "vercel-php@0.7.1"
     },
     {
-      "src": "*.html",
+      "src": "**/*.{html,css,js,jpg,jpeg,png,gif,svg,ico,json}",
       "use": "@vercel/static"
     }
   ],
