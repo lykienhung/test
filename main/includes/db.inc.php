@@ -15,5 +15,5 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     // Trên Vercel, lỗi sẽ hiện trong logs, không nên echo ra màn hình người dùng
-    die("Connection failed. Check logs for details.");
+    die("Lỗi kết nối cụ thể là: " . $e->getMessage());
 }
