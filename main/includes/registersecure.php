@@ -40,14 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
 
         // 6. Thông báo thành công
-        // Tạm thời COMMENT dòng chuyển hướng để nhìn thấy kết quả trên màn hình
-        echo "<h1>ĐĂNG KÝ THÀNH CÔNG!</h1>";
-        echo "<p>Dữ liệu đã được lưu vào Supabase.</p>";
-        echo "<a href='../login.php'>Bấm vào đây để đăng nhập</a>";
-        
-        // Sau khi test xong thì bỏ comment dòng dưới để tự chuyển hướng
-        // header("Location: ../login.php?signup=success");
-        // exit();
+        header("Location: ../login.php?signup=success");
+        exit();
 
     } catch (PDOException $e) {
         // Bắt lỗi trùng lặp (Ví dụ: Username hoặc Email đã tồn tại)

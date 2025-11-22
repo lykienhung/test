@@ -43,18 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':message' => $message
         ])) {
             // --- THÀNH CÔNG ---
-            
-            // Cách 1: Hiện thông báo ra màn hình để test (Khuyên dùng lúc này)
-            echo "<h1>GỬI PHẢN HỒI THÀNH CÔNG!</h1>";
-            echo "<p>Cảm ơn bạn $name, chúng tôi đã nhận được tin nhắn.</p>";
-            echo "<a href='../index.php'>Quay lại trang chủ</a>";
-
-            // Cách 2: Tự động chuyển hướng (Dùng sau khi test xong)
-            /*
             $_SESSION['feedback_success'] = "Cảm ơn bạn đã gửi phản hồi!";
             header("Location: ../index.php#feedback");
             exit();
-            */
+
         } else {
             echo "Lỗi: Không thể lưu vào database.";
         }

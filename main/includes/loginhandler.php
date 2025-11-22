@@ -37,24 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_username"] = htmlspecialchars($user["username"]);
             $_SESSION["user_email"] = $user["email"];
 
-            // Tạm thời ECHO ra màn hình để bạn biết là đã chạy đúng
-            echo "<h1>ĐĂNG NHẬP THÀNH CÔNG!</h1>";
-            echo "<p>Xin chào: " . $_SESSION["user_username"] . "</p>";
-            echo "<a href='../index.php'>Bấm vào đây để về trang chủ</a>";
-
-            // Khi nào test xong, bạn BỎ COMMENT dòng dưới để tự chuyển hướng:
-            // header("Location: ../index.php?login=success");
-            // exit();
+            header("Location: ../index.php?login=success");
+            exit();
 
         } else {
             // --- SAI MẬT KHẨU ---
-            echo "<h1>ĐĂNG NHẬP THẤT BẠI</h1>";
-            echo "<p>Sai tên đăng nhập hoặc mật khẩu.</p>";
-            echo "<a href='../login.php'>Thử lại</a>";
-            
-            // $_SESSION['login_error'] = "Incorrect username or password.";
-            // header("Location: ../login.php");
-            // exit();
+            $_SESSION['login_error'] = "Incorrect username or password.";
+            header("Location: ../login.php");
+            exit();
         }
 
         // Đóng kết nối
