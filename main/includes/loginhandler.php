@@ -35,18 +35,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Cookie này sẽ sống trong 1 ngày (86400 giây) và dùng được trên toàn bộ web ("/")
             setcookie("user_username", $user["username"], time() + 86400, "/");
             setcookie("user_id", $user["id"], time() + 86400, "/");
-
+            setcookie("user_email", $user["email"], time() + 86400, "/");
             // Chuyển hướng về trang chủ
             header("Location: ../index.php?login=success");
             exit();
         } else {
             // --- SAI MẬT KHẨU ---
-            $_SESSION['login_error'] = "Incorrect username or password.";
+            setcookie("login_error", "Sai tên đăng nhập hoặc mật khẩu!", time() + 5, "/");
+            
+            // Chuyển hướng về trang login
             header("Location: ../login.php");
             exit();
         }
 
-        // Đóng kết nối
         $pdo = null;
         $stmt = null;
 

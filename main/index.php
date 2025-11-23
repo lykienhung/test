@@ -327,33 +327,30 @@
             >
               Survival Book
             </a>
+
             <div class="flex items-center space-x-4">
-                <?php
-                // Kiểm tra xem biến session 'user_username' có tồn tại không
-                // Nếu có, nghĩa là người dùng đã đăng nhập
-                if (isset($_SESSION["user_username"])) {
-                ?>
-                    <!-- Giao diện KHI ĐÃ ĐĂNG NHẬP -->
-                    <span class="text-gray-300">
-                        Hi, <?php echo htmlspecialchars($_SESSION["user_username"]); ?>!
-                    </span>
-                    <a href="includes/logouthandler.php" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
-                        Logout
-                    </a>
-                <?php
-                } else {
-                ?>
-                    <!-- Giao diện KHI CHƯA ĐĂNG NHẬP -->
-                    <a href="login.php" class="text-vgu-text hover:text-white transition-colors">
-                        Login
-                    </a>
-                    <a href="register_update.html" class="vgu-orange hover:vgu-orange-dark text-white font-bold py-2 px-4 rounded-lg transition-colors">
-                        Register
-                    </a>
-                <?php
-                }
-                ?>
+              <?php if (isset($_COOKIE['user_username'])): ?>
+                  
+                  <span class="text-vgu-text">
+                      Hi, <?php echo htmlspecialchars($_COOKIE['user_username']); ?>!
+                  </span>
+                  
+                  <a href="includes/logouthandler.php" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                      Logout
+                  </a>
+
+              <?php else: ?> 
+              <a href="login.php" class="bg-vgu-orange hover:vgu-orange-dark text-vgu-text font-bold py-2 px-4 rounded-lg transition-colors">
+                      Login
+                  </a>
+                  
+                  <a href="register.html" class="vgu-orange hover:vgu-orange-dark text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                      Register
+                  </a>
+
+              <?php endif; ?>
             </div>
+        
           </nav>
         </div>
       </div>
@@ -1005,6 +1002,8 @@
       </div>
     </section>
 
+
+
     <section id="feedback" class="py-20 bg-vgu-black">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16">
@@ -1032,20 +1031,32 @@
 
         <div class="bg-vgu-surface backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-vgu-surface">
             
-            <?php
-                // Chuẩn bị sẵn các biến để điền vào form
-                $nameValue = '';
-                $emailValue = '';
-                $isReadonly = '';
+          <?php
+          // Chuẩn bị sẵn các biến
+          $nameValue = '';
+          $emailValue = '';
+          $isReadonly = '';
 
-                // Kiểm tra nếu người dùng đã đăng nhập
-                if (isset($_SESSION['user_username'])) {
-                    $nameValue = htmlspecialchars($_SESSION['user_username']);
-                    $emailValue = isset($_SESSION['user_email']) ? htmlspecialchars($_SESSION['user_email']) : ''; // Kiểm tra email tồn tại
-                    $isReadonly = 'readonly'; // Thêm thuộc tính readonly
-                }
-            ?>
+          // KIỂM TRA COOKIE    
+          if (isset($_COOKIE['user_username'])) {
+              $nameValue = htmlspecialchars($_COOKIE['user_username']);
+              $emailValue = isset($_COOKIE['user_email']) ? htmlspecialchars($_COOKIE['user_email']) : '';
+              $isReadonly = 'readonly';
+          }
+          ?>
+          <?php if (isset($_COOKIE['feedback_error'])): ?>
+              <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-center">
+                  <?php echo htmlspecialchars($_COOKIE['feedback_error']); ?>
+              </div>
+              <script>document.cookie = "feedback_error=; Max-Age=-99999999; path=/;";</script>
+          <?php endif; ?>
 
+          <?php if (isset($_COOKIE['feedback_success'])): ?>
+              <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 text-center">
+                  <?php echo htmlspecialchars($_COOKIE['feedback_success']); ?>
+              </div>
+              <script>document.cookie = "feedback_success=; Max-Age=-99999999; path=/;";</script>
+          <?php endif; ?>
             <form action="includes/feedbackhandler.php" method="POST" class="space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
                     <!-- Tên người gửi -->

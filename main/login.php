@@ -377,18 +377,20 @@
         </div>
 
         <?php
-            // Bắt đầu session ở ĐẦU FILE login.php
-            // session_start(); // Hãy chắc chắn bạn đã có dòng này ở đầu file!
+        // Không cần session_start() nữa
 
-            if (isset($_SESSION['login_error'])) {
-                // Nếu có lỗi, hiển thị nó trong một div màu đỏ
-                echo '<div class="text-red-300 px-4 py-3 mb-2 text-center">';
-                echo htmlspecialchars($_SESSION['login_error']);
-                echo '</div>';
-                
-                // Sau khi hiển thị, xóa nó đi để không hiện lại
-                unset($_SESSION['login_error']);
-            }
+        // Kiểm tra xem có Cookie báo lỗi được gửi từ handler sang không
+        if (isset($_COOKIE['login_error'])) {
+            
+            // Hiển thị lỗi
+            echo '<div class="text-red-300 px-4 py-3 mb-2 text-center border border-red-400 rounded">';
+            echo htmlspecialchars($_COOKIE['login_error']);
+            echo '</div>';
+
+            // Quan trọng: Xóa Cookie đi ngay lập tức để F5 không hiện lại
+            // (Bằng cách đặt thời gian sống về quá khứ)
+            setcookie("login_error", "", time() - 3600, "/"); 
+        }
         ?>
 
 
