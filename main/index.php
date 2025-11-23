@@ -1,6 +1,5 @@
 <?php
-    // Đặt dòng này ở ĐẦU TIÊN của file, trước bất kỳ thẻ HTML nào
-    session_start(); 
+ob_start(); // Bắt đầu lưu bộ nhớ đệm
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -1044,19 +1043,7 @@
               $isReadonly = 'readonly';
           }
           ?>
-          <?php if (isset($_COOKIE['feedback_error'])): ?>
-              <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-center">
-                  <?php echo htmlspecialchars($_COOKIE['feedback_error']); ?>
-              </div>
-              <script>document.cookie = "feedback_error=; Max-Age=-99999999; path=/;";</script>
-          <?php endif; ?>
 
-          <?php if (isset($_COOKIE['feedback_success'])): ?>
-              <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 text-center">
-                  <?php echo htmlspecialchars($_COOKIE['feedback_success']); ?>
-              </div>
-              <script>document.cookie = "feedback_success=; Max-Age=-99999999; path=/;";</script>
-          <?php endif; ?>
             <form action="includes/feedbackhandler.php" method="POST" class="space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
                     <!-- Tên người gửi -->
@@ -1102,7 +1089,19 @@
                             class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                         ></textarea>
                     </div>
+          <?php if (isset($_COOKIE['feedback_error'])): ?>
+              <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-center">
+                  <?php echo htmlspecialchars($_COOKIE['feedback_error']); ?>
+              </div>
+              <script>document.cookie = "feedback_error=; Max-Age=-99999999; path=/;";</script>
+          <?php endif; ?>
 
+          <?php if (isset($_COOKIE['feedback_success'])): ?>
+              <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 text-center">
+                  <?php echo htmlspecialchars($_COOKIE['feedback_success']); ?>
+              </div>
+              <script>document.cookie = "feedback_success=; Max-Age=-99999999; path=/;";</script>
+          <?php endif; ?>
                     <!-- Nút Gửi -->
                     <div class="text-center">
                         <button 
@@ -1798,3 +1797,6 @@
   </body>
   
 </html>
+<?php
+ob_end_flush();
+?>
